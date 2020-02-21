@@ -1,0 +1,2 @@
+42129
+http://42.159.227.78/samsung_kr_fota_mt7682.bin
