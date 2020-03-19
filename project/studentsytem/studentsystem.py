@@ -48,3 +48,23 @@ def menu():
     ------------------------------------------------------------
     说明：通过数字或上下方向键选择菜单里的功能
           ''')
+
+#将学生信息保存到文件
+def save(student):
+    try:
+        students_txt = open(filename,"a")   #以追加模式打开
+    except Exception as e:
+        students_txt = open(filename,"w")   #文件不存在，创建文件并打开
+    for info in student:
+        students_txt.write(str(info) + "\n")    #按行存储，添加换行符
+    students_txt.close()                    #关闭文件
+
+
+#录入学生信息
+def insert():
+    stdentList = []         #奥村学生信息的列表
+    mark = True             #是否继续添加
+    while mark:
+        id = input("请输入ID(如1001) : ")
+        if not id:          #ID为空，跳出循环
+            break
