@@ -57,7 +57,7 @@ def save(student):
         students_txt = open(filename,"w")   #文件不存在，创建文件并打开
     for info in student:
         students_txt.write(str(info) + "\n")    #按行存储，添加换行符
-    students_txt.close()                    #关闭文件
+    mZ()                    #关闭文件
 
 
 #录入学生信息
@@ -68,3 +68,24 @@ def insert():
         id = input("请输入ID(如1001) : ")
         if not id:          #ID为空，跳出循环
             break
+        name = input("请输入名字：")
+        if not name:        #名字为空，跳出循环
+            break
+        try:
+            english = int(input("请输入英语成绩："))
+            python = int(input("请输入python成绩："))
+            c = int(input("请输入C语言成绩："))
+        except:
+            print("输入无效,不是整型数值....重新录入信息")
+            continue
+        #将输入的学生的信息保存到字典
+        stdent = {"id":id, "name":name, "english":english, "python":python, "c": c}
+        stdentList.append(stdent)
+        inputMark = input("是否继续添加?(y/n) :")
+        if inputMark == "y":
+            mark = True
+        else:
+            mark = False
+        save(stdentList)                #将学生信息保存到文件
+        print("学生信息录入完毕!!!")
+        
