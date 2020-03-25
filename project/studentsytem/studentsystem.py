@@ -122,4 +122,37 @@ def delete():
                 mark = True
             else:
                 mark = False
-                  
+ 
+def modify():
+    show()
+    if os.path.exist(filename):
+        with open(filename, 'r') as rfile:
+            student_old = rfile.readlines()
+    else:
+        return
+    studentid = input("请输入要修改的学生ID：")
+    with open(filename, "w") as wfile:      #以只写模式打开文件
+        for student in student_old:
+            d = dict(eval(student))
+            if d["id"] == studentid:        #是否为要修改的学生
+                print("找到了这名学生，可以修改他的信息！")
+                while True:                 #输入要修改的内容
+                    try:
+                        d["name"] = input("请输入姓名：")
+                        d["english"] = int(input("请输入英语成绩："))
+                        d["python"] = int(input("请输入python成绩："))
+                        d["c"] = int(input("请输入c语言成绩："))
+                    except:
+                        print("您的输入有误，请重新输入。")
+                    else:
+                        break;
+                 student = str(d)       #将字典转换为字符串
+                 wfile.write(student + "\n")    #将修改的信息写入到文件
+                 print("修改成功！")
+            else:
+               wfile.write(student)     #将未修改的信息写入文件
+            mark = input("是否继续修改其他学生信息?(y/n): ")
+            if mark == "y":
+                modify()            #重新执行修改操作
+        
+    
