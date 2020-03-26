@@ -155,4 +155,6 @@ def modify():
             if mark == "y":
                 modify()            #重新执行修改操作
         
+def search():           #查询学生信息
+    
     
