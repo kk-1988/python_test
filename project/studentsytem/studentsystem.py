@@ -156,5 +156,21 @@ def modify():
                 modify()            #重新执行修改操作
         
 def search():           #查询学生信息
-    
-    
+    mark = True
+    student_query = []
+    while mark:
+        id = ""
+        name = ""
+        if os.path.exist(filename)：      #判断文件是否存在
+            mode= input("按ID查输入1;按姓名查输入2: ")
+            if mode == "1":
+                id = input("请输入学生ID：")
+            elif mode == "2"
+                name = input("请输入学生姓名：")
+            else：
+                print("您的输入有误，请重新输入!")
+                search()
+            with open(filename, 'r') as file:   #打开文件
+                student = file.readlines()      #读取全部内容
+                for list in student:
+                    
