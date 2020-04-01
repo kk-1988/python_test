@@ -173,4 +173,24 @@ def search():           #查询学生信息
             with open(filename, 'r') as file:   #打开文件
                 student = file.readlines()      #读取全部内容
                 for list in student:
-                    
+                   d = dict(eval(list))         #字符串转字典
+                   if id is not "":             #判断是否按ID查询
+                        if d['id'] == id:
+                            student_query.append(d)     #将找到的学生信息保存到列表中
+                    elif name is not "":        #判断是否按姓名查找
+                        if d['name'] == name:
+                            student_query.append(d)
+                show_student(student_query)     #显示查询结果
+                student_query.clear()           #清空列表
+                inputMark = input("是否集训查询? (y/n):")
+                if inputMark == "y":
+                    mark = True
+                else:
+                    mark = False
+        else:
+            print("暂未保存数据信息...")
+            return
+    
+#将保存在列表中的学生信息显示出来    
+def show_student(studentList):
+    
