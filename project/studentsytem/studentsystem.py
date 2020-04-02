@@ -193,4 +193,7 @@ def search():           #查询学生信息
     
 #将保存在列表中的学生信息显示出来    
 def show_student(studentList):
+    if not 
+    
+    
     
