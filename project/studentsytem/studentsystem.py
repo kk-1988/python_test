@@ -193,7 +193,30 @@ def search():           #查询学生信息
     
 #将保存在列表中的学生信息显示出来    
 def show_student(studentList):
-    if not 
+    if not studentList:     #如果没有要显示的数据
+        print("无数据信息\n")
+        return
+    #定义标题显示格式
+    format_title = "{:^6}{:^12}\t{:^8}\t{:^10}\t{:^10}\t{:^10}"
+    print(format_title.format("ID","名字","英语成绩","Python成绩","C语言成绩","总成绩"))   #按指定格式显示标题
+    #定义具体显示内容
+    format_data = "{:^6}{:^12}\t{:^12}\t{:^12}\t{:^12}\t{:^12}"
+    for info in studentList:
+        print(format_data.format(info.get("id"),
+            info.get("name"),str(info.get("english")),str(info.get("python")),
+            str(info.get("c")),
+            str(info.get("english") + info.get("python") + 
+            info.get("c").center(12)))
+        
     
-    
+def total():
+    if os.path.exists(filename):
+        with open(filename, 'r') as rfile:
+            student_old = rfile.readlines()
+            if student_old:
+                print("一共有%d名学生! " % len(student_old))  #统计学生人数
+            else:
+                print("还没有录入学生信息!")
+    else:
+        print("暂未保存数据信息...")
     
