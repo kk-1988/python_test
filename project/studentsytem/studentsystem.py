@@ -219,4 +219,15 @@ def total():
                 print("还没有录入学生信息!")
     else:
         print("暂未保存数据信息...")
-    
+  
+def show():
+    student_new = []
+    if os.path.exists(filename):            #判断文件是否存在
+        with open(filename, 'r') as rfile:  #打开文件
+            student_old = efile.readlines() #读取全部内容
+        for list in student_old:
+            sutdent_new.append(eval(list))  #将找到的学生信息保存到列表中
+        if student_new:
+            show_student(student_new)
+    else:
+        print("暂未保存数据信息...")
